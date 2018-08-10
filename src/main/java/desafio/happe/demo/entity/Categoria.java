@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "categoria")
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nome")

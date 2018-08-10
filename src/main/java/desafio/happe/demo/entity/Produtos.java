@@ -9,7 +9,7 @@ public class Produtos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "nomeProduto")
     private String nomeProduto;
@@ -17,24 +17,31 @@ public class Produtos {
     @Column(name = "valor")
     private Double valor;
 
-    public Produtos() {
-    }
-
-    public Produtos(Integer id, String nomeProduto, Double valor) {
-        this.id = id;
-        this.nomeProduto = nomeProduto;
-        this.valor = valor;
-    }
-
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    public Integer getId() {
+    public Produtos() {
+
+    }
+
+    public Produtos(
+            Long id,
+            String nomeProduto,
+            Double valor,
+            Categoria categoria
+    ) {
+        this.id = id;
+        this.nomeProduto = nomeProduto;
+        this.valor = valor;
+        this.categoria = categoria;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

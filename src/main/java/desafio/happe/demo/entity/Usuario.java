@@ -1,6 +1,10 @@
 package desafio.happe.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -9,7 +13,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
@@ -20,21 +24,25 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
+    @JsonIgnore
+    @OneToMany(mappedBy="categoria")
+    private List<Produtos> produtos = new ArrayList<>();
+
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email, String senha) {
+    public Usuario(Long id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

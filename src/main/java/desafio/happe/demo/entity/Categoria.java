@@ -12,99 +12,37 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "alimentos")
-    private String alimentos;
-
-    @Column(name = "limpeza")
-    private String limpeza;
-
-    @Column(name = "bebidas")
-    private String bebidas;
-
-    @Column(name = "congelados")
-    private String congelados;
-
-    @Column(name = "confeitaria")
-    private String confeitaria;
-
-    @Column(name = "acougue")
-    private String acougue;
-
-    public Categoria() {
-    }
-
-    public Categoria(Integer id, String alimentos, String limpeza, String bebidas, String congelados,
-                     String confeitaria, String acougue) {
-
-            this.id = id;
-            this.alimentos = alimentos;
-            this.limpeza = limpeza;
-            this.bebidas = bebidas;
-            this.congelados = congelados;
-            this.confeitaria = confeitaria;
-            this.acougue = acougue;
-    }
+    @Column(name = "nome")
+    private String nome;
 
     @JsonIgnore
     @OneToMany(mappedBy="categoria")
     private List<Produtos> produtos = new ArrayList<>();
 
-    public Integer getId() {
+    public Categoria() {
+    }
+
+    public Categoria(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getAlimentos() {
-        return alimentos;
+    public String getNome() {
+        return nome;
     }
 
-    public void setAlimentos(String alimentos) {
-        this.alimentos = alimentos;
-    }
-
-    public String getLimpeza() {
-        return limpeza;
-    }
-
-    public void setLimpeza(String limpeza) {
-        this.limpeza = limpeza;
-    }
-
-    public String getBebidas() {
-        return bebidas;
-    }
-
-    public void setBebidas(String bebidas) {
-        this.bebidas = bebidas;
-    }
-
-    public String getCongelados() {
-        return congelados;
-    }
-
-    public void setCongelados(String congelados) {
-        this.congelados = congelados;
-    }
-
-    public String getConfeitaria() {
-        return confeitaria;
-    }
-
-    public void setConfeitaria(String confeitaria) {
-        this.confeitaria = confeitaria;
-    }
-
-    public String getAcougue() {
-        return acougue;
-    }
-
-    public void setAcougue(String acougue) {
-        this.acougue = acougue;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override

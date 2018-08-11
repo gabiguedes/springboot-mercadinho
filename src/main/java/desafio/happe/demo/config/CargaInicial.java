@@ -9,6 +9,7 @@ import desafio.happe.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Arrays;
 
@@ -24,6 +25,9 @@ public class CargaInicial implements CommandLineRunner {
     @Autowired
     private ProdutosRepository produtosRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bc;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -31,7 +35,7 @@ public class CargaInicial implements CommandLineRunner {
                 null,
                 "Gabriela Guedes",
                 "gabriela_rayssa@hotmail.com",
-                ("123"));
+                bc.encode("123"));
 
         Categoria cat1 = new Categoria(null, "Alimentos");
         Categoria cat2 = new Categoria(null, "Limpeza");

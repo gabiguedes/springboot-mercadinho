@@ -34,9 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATCHERS = {};
 
-    private static final String[] PUBLIC_MATCHERS_GET = {};
+    private static final String[] PUBLIC_MATCHERS_GET = {"/usuarios/recuperar/senha/**"};
 
-    private static final String[] PUBLIC_MATCHERS_POST = { "/auth/forgot/**" };
+    private static final String[] PUBLIC_MATCHERS_POST = { };
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

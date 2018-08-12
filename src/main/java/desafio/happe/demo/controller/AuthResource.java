@@ -36,11 +36,12 @@ public class AuthResource {
 	}
 
 	@RequestMapping(value = "/facebook", method = RequestMethod.POST)
-	public ResponseEntity<Object> facebookLOgin(@RequestBody Usuario usuario) {
+	public ResponseEntity<String> facebookLogin(HttpServletResponse response,@RequestBody Usuario usuario) {
 		Usuario user = authService.facebookLogin(usuario);
 		String token = jwtUtil.generateToken(user.getEmail());
-		return ResponseEntity.ok().body("Bearer " + token);
+		response.addHeader("Authorization", "Bearer " + token);
+		response.addHeader("access-control-expose-headers", "Authorization");
+		return ResponseEntity.noContent().build();
 	}
-
 
 }

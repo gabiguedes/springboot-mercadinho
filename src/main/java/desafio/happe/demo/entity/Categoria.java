@@ -46,6 +46,14 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public List<Produtos> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produtos> produtos) {
+        this.produtos = produtos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

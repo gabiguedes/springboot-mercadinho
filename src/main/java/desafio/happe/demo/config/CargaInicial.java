@@ -39,8 +39,9 @@ public class CargaInicial implements CommandLineRunner {
 
         Categoria cat1 = new Categoria(null, "Alimentos");
         Categoria cat2 = new Categoria(null, "Limpeza");
+        Categoria cat3 = new Categoria(null, "Bebidas");
 
-        categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         usuarioRepository.saveAll(Arrays.asList(gabriela));
 
         Produtos p1 = new Produtos(null, "Arroz", 2000.00,cat1);

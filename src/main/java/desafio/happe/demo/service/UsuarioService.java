@@ -42,6 +42,13 @@ public class UsuarioService {
 
     public Usuario update(Usuario obj) {
         Usuario newObj = findById(obj.getId());
+
+        if(!obj.getSenha().equals("")){
+            obj.setSenha(bc.encode(obj.getSenha()));
+        }else{
+            obj.setSenha(newObj.getSenha());
+        }
+
         return usuarioRepository.save(obj);
     }
 

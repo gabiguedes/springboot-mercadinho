@@ -1,5 +1,6 @@
 package desafio.happe.demo.service;
 
+import desafio.happe.demo.entity.Categoria;
 import desafio.happe.demo.entity.Produtos;
 import desafio.happe.demo.repository.ProdutosRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -15,8 +16,16 @@ public class ProdutosService {
     @Autowired
     ProdutosRepository produtosRepository;
 
+    @Autowired
+    CategoriaService categoriaService;
+
     public List<Produtos> findAll() {
-        return (List<Produtos>) produtosRepository.findAll();
+        return produtosRepository.findAll();
+    }
+
+    public List<Produtos> findAllByCategoria(Long id) {
+        Categoria categoria= categoriaService.findById(id);
+        return  produtosRepository.findByCategoria(categoria);
     }
 
     public Produtos findById(Long id) {

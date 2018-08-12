@@ -42,6 +42,17 @@ public class UsuarioController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+    public ResponseEntity <Usuario> findByEmail(@PathVariable String email) {
+        Usuario obj = usuarioService.findByEmail(email);
+
+        if (Objects.isNull(obj)) {
+            return ResponseEntity.status(404).body(obj);
+        }
+
+        return ResponseEntity.ok().body(obj);
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity <Usuario> login(@RequestBody Usuario usuario) {
         Usuario obj = usuarioService.login(usuario);

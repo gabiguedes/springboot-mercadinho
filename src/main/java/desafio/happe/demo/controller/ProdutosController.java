@@ -28,4 +28,10 @@ public class ProdutosController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @RequestMapping(value = "/categoria/{id}",method = RequestMethod.GET)
+    public ResponseEntity<List<Produtos>> findAllByCategoria(@PathVariable Long id) {
+        List<Produtos> list = produtosService.findAllByCategoria(id);
+        return ResponseEntity.ok().body(list);
+    }
+
 }

@@ -1,7 +1,6 @@
 package desafio.happe.demo.config;
 
 import java.util.Arrays;
-
 import desafio.happe.demo.security.JWTAuthenticationFilter;
 import desafio.happe.demo.security.JWTAuthorizationFilter;
 import desafio.happe.demo.security.JWTUtil;
@@ -34,9 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATCHERS = {};
 
-    private static final String[] PUBLIC_MATCHERS_GET = {"/usuarios/recuperar/senha/**"};
+    private static final String[] PUBLIC_MATCHERS_GET = {};
 
-    private static final String[] PUBLIC_MATCHERS_POST = { };
+    private static final String[] PUBLIC_MATCHERS_POST = { "/auth/forgot/**" };
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

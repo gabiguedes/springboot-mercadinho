@@ -32,6 +32,7 @@ public class UsuarioService {
     }
 
     public Usuario insert(Usuario obj) {
+        obj.setSenha(bc.encode(obj.getSenha()));
         return usuarioRepository.save(obj);
     }
 
